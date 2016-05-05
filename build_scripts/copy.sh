@@ -12,8 +12,9 @@
 commit_dir="${GH_PUBLISHER_PUBLISH_DIR}/${TRAVIS_COMMIT}"
 
 mkdir "$commit_dir"
+cd tmp/rubycritic
 
-find tmp/rubycritic \( \
+find . \( \
      -name \*.html -o \
      -name \*.css -o \
      -name \*.js -o \
