@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>RubyCritic</title>
+    <link href="../../assets/stylesheets/application.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <link href="../../assets/stylesheets/prettify.custom_theme.css" media="screen, projection, print" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <header class="project-header group">
+      <div class="container">
+        <h1 class="logo"><a href="../../overview.html" class="logo-link">RubyCritic</a></h1>
+        <nav class="project-nav">
+          <a href="../../overview.html" class="project-nav-item">Overview</a>
+          <a href="../../code_index.html" class="project-nav-item">Code</a>
+          <a href="../../smells_index.html" class="project-nav-item">Smells</a>
+        </nav>
+      </div>
+    </header>
+    <div class="container">
+      <div class="file-header group rated">
+  <span class="rating rating-d circled-text circle">
+    D
+  </span>
+  <h2 class="file-name">AddressesController</h2>
+
+  <span class="file-committed-at">
+    
+      Updated <time class='js-timeago' datetime='2016-05-05 18:48:06 +0530'>2016-05-05 18:48:06 +0530</time>
+    
+  </span>
+
+  <div class="file-stats group">
+    <div class="file-stat">
+      54 complexity
+    </div>
+    <div class="file-stat">
+      6.0 complexity per method
+    </div>
+    <div class="file-stat">
+      1 churn
+    </div>
+    <div class="file-stat">
+      9 methods
+    </div>
+    <div class="file-stat">
+      109 duplication
+    </div>
+  </div>
+
+  
+    <button id="js-toggle-smells" class="smells-toggle-button button">Toggle Smells</button>
+  
+</div>
+
+<code class="prettyprint linenums lang-ruby file-code js-file-code">class AddressesController &lt; ApplicationController<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Irresponsible-Module.md" target="_blank">IrresponsibleModule</a>)      AddressesController has no descriptive comment          </span>  </li></ul>
+  before_action :set_address, only: [:show, :edit, :update, :destroy]
+
+  # GET /addresses
+  # GET /addresses.json
+  def index
+    @addresses = Address.all
+  end
+
+  # GET /addresses/1
+  # GET /addresses/1.json
+  def show
+  end
+
+  # GET /addresses/new
+  def new
+    @address = Address.new
+  end
+
+  # GET /addresses/1/edit
+  def edit
+  end
+
+  # POST /addresses
+  # POST /addresses.json
+  def create<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Code.md" target="_blank">DuplicateCode</a>)      Similar code found in 2 nodes                        <a href="addresses_controller.html#L26" class="js-smell-location">0</a>                  <a href="people_controller.html#L28" class="js-smell-location">1</a>                  </span>  </li>  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank">TooManyStatements</a>)      AddressesController#create has approx 10 statements          </span>  </li></ul>
+    @address = Address.new(address_params)
+
+    respond_to do |format|
+      if @address.save
+        format.html { redirect_to @address, notice: &#39;Address was successfully created.&#39; }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#create calls format.html 2 times                        <a href="addresses_controller.html#L31" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L34" class="js-smell-location">1</a>                  </span>  </li></ul>
+        format.json { render action: &#39;show&#39;, status: :created, location: @address }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#create calls format.json 2 times                        <a href="addresses_controller.html#L32" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L35" class="js-smell-location">1</a>                  </span>  </li></ul>
+      else
+        format.html { render action: &#39;new&#39; }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#create calls format.html 2 times                        <a href="addresses_controller.html#L31" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L34" class="js-smell-location">1</a>                  </span>  </li></ul>
+        format.json { render json: @address.errors, status: :unprocessable_entity }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#create calls format.json 2 times                        <a href="addresses_controller.html#L32" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L35" class="js-smell-location">1</a>                  </span>  </li></ul>
+      end
+    end
+  end
+
+  # PATCH/PUT /addresses/1
+  # PATCH/PUT /addresses/1.json
+  def update<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Code.md" target="_blank">DuplicateCode</a>)      Similar code found in 2 nodes                        <a href="addresses_controller.html#L42" class="js-smell-location">0</a>                  <a href="people_controller.html#L44" class="js-smell-location">1</a>                  </span>  </li>  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank">TooManyStatements</a>)      AddressesController#update has approx 9 statements          </span>  </li></ul>
+    respond_to do |format|
+      if @address.update(address_params)
+        format.html { redirect_to @address, notice: &#39;Address was successfully updated.&#39; }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#update calls format.html 2 times                        <a href="addresses_controller.html#L45" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L48" class="js-smell-location">1</a>                  </span>  </li></ul>
+        format.json { head :no_content }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#update calls format.json 2 times                        <a href="addresses_controller.html#L46" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L49" class="js-smell-location">1</a>                  </span>  </li></ul>
+      else
+        format.html { render action: &#39;edit&#39; }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#update calls format.html 2 times                        <a href="addresses_controller.html#L45" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L48" class="js-smell-location">1</a>                  </span>  </li></ul>
+        format.json { render json: @address.errors, status: :unprocessable_entity }<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md" target="_blank">DuplicateMethodCall</a>)      AddressesController#update calls format.json 2 times                        <a href="addresses_controller.html#L46" class="js-smell-location">0</a>                  <a href="addresses_controller.html#L49" class="js-smell-location">1</a>                  </span>  </li></ul>
+      end
+    end
+  end
+
+  # DELETE /addresses/1
+  # DELETE /addresses/1.json
+  def destroy<ul class="nocode smells js-smells">  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Duplicate-Code.md" target="_blank">DuplicateCode</a>)      Similar code found in 2 nodes                        <a href="addresses_controller.html#L56" class="js-smell-location">0</a>                  <a href="people_controller.html#L58" class="js-smell-location">1</a>                  </span>  </li>  <li class="smell ">    <span class="description">      (<a href="https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md" target="_blank">TooManyStatements</a>)      AddressesController#destroy has approx 6 statements          </span>  </li></ul>
+    @address.destroy
+    respond_to do |format|
+      format.html { redirect_to addresses_url }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_address
+      @address = Address.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def address_params
+      params[:address]
+    end
+end
+</code>
+
+    </div>
+    <script src='../../assets/javascripts/jquery-2.1.0.js'></script>
+    <script src='../../assets/javascripts/jquery.tablesorter.js'></script>
+    <script src='../../assets/javascripts/jquery.floatThead-v1.2.7.js'></script>
+    <script src='../../assets/javascripts/jquery.timeago-v1.4.1.js'></script>
+    <script src='../../assets/javascripts/highcharts.src-4.0.1.js'></script>
+    <script src='../../assets/javascripts/jquery.scrollTo-1.4.11.js'></script>
+    <script src='../../assets/javascripts/prettify-4-Mar-2013.js'></script>
+    <script src='../../assets/javascripts/application.js'></script>
+  </body>
+</html>
