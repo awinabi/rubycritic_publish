@@ -10,5 +10,5 @@
 #
 
 cd "$GH_PUBLISHER_PROJECT_DIR"
-bundle exec rubycritic
+bundle exec rubycritic app/ lib/
 
