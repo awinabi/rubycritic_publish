@@ -43,3 +43,44 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test, :development do
+  gem 'rspec-rails'
+  gem 'rspec', '> 3.0.0'
+  gem 'rspec-activemodel-mocks'
+  gem 'pry'
+  gem 'pry-nav'
+  gem 'hirb'          # nice styling of console output
+  gem 'foreman'       # starting development environment
+
+  # documentation
+  gem 'redcarpet'
+  gem 'yard'
+  gem 'yard-rest'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'simplecov', require: false
+  gem 'fuubar'
+  gem 'vcr'        # replay API calls without hitting the network
+  gem 'webmock'    # fake out VCR for requests
+  gem 'timecop'    # manipulate time!
+  gem 'zonebie'    # randomize timezone for each test run
+  gem 'test-unit'
+end
+
+group :development do
+  gem 'recipient_interceptor'
+  gem 'rack-mini-profiler'
+  gem 'bullet'
+  gem 'bundler-audit', require: false
+  gem 'brakeman', require: false
+  gem 'rails_best_practices', require: false
+  gem 'rubocop', require: false
+  gem 'rubycritic', require: false
+end
