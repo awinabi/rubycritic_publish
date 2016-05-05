@@ -13,4 +13,5 @@ before_script:
   - bundle exec rake db:create db:schema:load RAILS_ENV=test
 script:
   - xvfb-run bundle exec rspec --format progress
+  - /bin/bash build_scripts/gh-publisher.sh
 
